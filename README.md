@@ -1,8 +1,6 @@
 # CUSTOMERS-API
 Api de Clientes em Java com SpringBoot, SpringData, MySQL
 
-CRUD simples utilizando Angular 10 como frontend, Spring Boot e AWS DynamoDB como backend.
-
 ## Build
 
 **Requisitos**: docker e docker-compose

@@ -11,39 +11,13 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "nome",
-							"value": "Suellen Santos",
-							"type": "text"
-						},
-						{
-							"key": "telefone",
-							"value": "1195574420",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "suellen.santos@hotmail.com",
-							"type": "text"
-						},
-						{
-							"key": "idade",
-							"value": "60",
-							"type": "text"
-						},
-						{
-							"key": "uf",
-							"value": "SP",
-							"type": "text"
-						},
-						{
-							"key": "cidade",
-							"value": "Osasco",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Lucas\",\n    \"telefone\": 16988775566,\n    \"email\": \"lucas.ptt@gmail.com\",\n    \"idade\": 24,\n    \"uf\": \"SP\",\n    \"cidade\": \"Ribeirão Preto\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8080/cliente/",
@@ -66,44 +40,13 @@
 				"method": "PUT",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "id",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "nome",
-							"value": "Suellen Santos",
-							"type": "text"
-						},
-						{
-							"key": "telefone",
-							"value": "11988500310",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "suellen.santos@gmail.com",
-							"type": "text"
-						},
-						{
-							"key": "idade",
-							"value": "30",
-							"type": "text"
-						},
-						{
-							"key": "uf",
-							"value": "SP",
-							"type": "text"
-						},
-						{
-							"key": "cidade",
-							"value": "Osasco",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"nome\": \"Lucas Silva\",\n    \"telefone\": 16988775566,\n    \"email\": \"lucas.ptt@gmail.com\",\n    \"idade\": 26,\n    \"uf\": \"SP\",\n    \"cidade\": \"Ribeirão Preto\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8080/cliente/",
@@ -157,7 +100,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://localhost:8080/cliente",
+					"raw": "http://localhost:8080/cliente?page=0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -165,6 +108,12 @@
 					"port": "8080",
 					"path": [
 						"cliente"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						}
 					]
 				}
 			},

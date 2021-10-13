@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -65,19 +66,15 @@ public class ClientesController {
         return clientesService.buscarPorUfEIdadeEntre(uf, idadeMinima, idadeMaxima);
     }
 
-    @PostMapping
-    public @ResponseBody String criarCliente(@RequestParam String nome, @RequestParam String email, 
-      @RequestParam(required = false) Long telefone, @RequestParam(required = false) Integer idade,
-      @RequestParam String uf, @RequestParam String cidade)  {
-        clientesService.criarCliente(nome, email, telefone, idade, uf, cidade);
+    @PostMapping(consumes = "application/json")
+    public @ResponseBody String criarCliente(@RequestBody Cliente c)  {
+        clientesService.criarCliente(c);
         return "created";
     }
 
-    @PutMapping
-    public @ResponseBody String alterarCliente(@RequestParam Long id, @RequestParam String nome, @RequestParam String email, 
-      @RequestParam(required = false) Long telefone, @RequestParam(required = false) Integer idade,
-      @RequestParam String uf, @RequestParam String cidade)  {
-        clientesService.alterarCliente(id, nome, email, telefone, idade, uf, cidade);
+    @PutMapping(consumes = "application/json")
+    public @ResponseBody String alterarCliente(@RequestBody Cliente c)  {
+        clientesService.alterarCliente(c);
         return "updated";
     }
 

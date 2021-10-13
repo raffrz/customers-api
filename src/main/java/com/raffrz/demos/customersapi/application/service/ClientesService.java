@@ -97,43 +97,31 @@ public class ClientesService {
     }
 
     /**
-     * 
-     * @param nome
-     * @param email
-     * @param telefone
-     * @param idade
-     * @param uf
-     * @param cidade
+     * salva um cliente novo
+     * @param cliente
      */
-    public void criarCliente(String nome, String email, Long telefone, Integer idade, String uf, String cidade) {
-        Cliente c = new Cliente(null, nome, email, telefone, uf, cidade, idade);
+    public void criarCliente(Cliente cliente) {
+        Cliente c = new Cliente(null, cliente.getNome(), cliente.getEmail(), cliente.getTelefone(), cliente.getUf(), cliente.getCidade(), cliente.getIdade());
         repository.save(c);
     }
 
     /**
      * altera o cliente pelo id.
-     * se não houver registro cria um novo
+     * se não houver registro não cria um novo
      * 
-     * @param id
-     * @param nome
-     * @param email
-     * @param telefone
-     * @param idade
-     * @param uf
-     * @param cidade
+     * @param cliente
      */
     @Transactional
-    public void alterarCliente(Long id, String nome, String email, Long telefone, Integer idade, String uf,
-            String cidade) {
-        Cliente c = repository.getById(id);
-        if (c != null) {
-            c.setNome(nome);
-            c.setEmail(email);
-            c.setTelefone(telefone);
-            c.setUf(uf);
-            c.setCidade(cidade);
-            c.setIdade(idade);
-            repository.save(c);
+    public void alterarCliente(Cliente cliente) {
+        Cliente found = repository.getById(cliente.getId());
+        if (found != null) {
+            found.setNome(cliente.getNome());
+            found.setEmail(cliente.getEmail());
+            found.setTelefone(cliente.getTelefone());
+            found.setUf(cliente.getUf());
+            found.setCidade(cliente.getCidade());
+            found.setIdade(cliente.getIdade());
+            repository.save(found);
         }
     }
 

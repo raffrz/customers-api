@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Classe Service que controla as operacoes sobre a entidade Cliente
@@ -121,19 +122,19 @@ public class ClientesService {
      * @param uf
      * @param cidade
      */
+    @Transactional
     public void alterarCliente(Long id, String nome, String email, Long telefone, Integer idade, String uf,
             String cidade) {
         Cliente c = repository.getById(id);
-        if (c == null) {
-            c = new Cliente();
+        if (c != null) {
             c.setNome(nome);
             c.setEmail(email);
             c.setTelefone(telefone);
             c.setUf(uf);
             c.setCidade(cidade);
             c.setIdade(idade);
+            repository.save(c);
         }
-        repository.save(c);
     }
 
     /**
